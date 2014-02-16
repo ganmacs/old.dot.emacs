@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: edge
+# key: edge
+# --
+class Edge {
+  public int to;
+  public int from;
+
+  public Edge(int to, int from) {
+    this.to = to;
+    this.from = from;
+  }
+}

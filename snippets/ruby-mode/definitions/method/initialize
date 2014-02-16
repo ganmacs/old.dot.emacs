@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: initialize ... end
+# key: initialize
+# --
+initialize
+  $0
+end

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bracket
+# binding: C-c (
+# --
+("$1")$0
