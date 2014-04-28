@@ -1,3 +1,4 @@
+(require 'rhtml-mode)
 (setq auto-mode-alist
       (append auto-mode-alist
               '(("\\.eco$"    .rhtml-mode)

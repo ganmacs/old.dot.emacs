@@ -3,4 +3,4 @@
 # --
 `(indent-for-tab-command)`puts nil, "<============================================================ OUTPUT START HERE"
 p `(replace-regexp-in-string "^\n" "" (replace-regexp-in-string "\n$" "" yas/selected-text))`$0
-puts "<============================================================ OUTPUT CLOSE HERE", nil
+puts "<============================================================ OUTPUT CLOSE HERE"

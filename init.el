@@ -109,10 +109,10 @@
     rhtml-mode         ; Major mode for editing RHTML files
     markdown-mode      ; Major mode to edit Markdown files in Emacs
     yaml-mode          ; Simple major mode to edit YAML file for emacs
-    tuareg-mode        ; A  GOOD Emacs mode to edit Objective Caml code.
     scss-mode          ; Major mode for editing SCSS files(http://sass-lang.com)
     rsense             ; RSense client for Emacs
-;    jedi               ; available  An awesome Python auto-completion for Emacs
+    rspec-mode         ; Enhance ruby-mode for RSpec
+    rinari             ; Rinari Is Not A Rails IDE
     jedi               ; An awesome Python auto-completion for Emacs
 
     ;; looks
