@@ -125,6 +125,7 @@
     rainbow-mode       ; Colorize color names in buffers
     highlight-indentation ; Function for highlighting indentation
     highlight-symbol   ; Quickly highlight a symbol throughout the buffer
+    hlinum             ; Extension for linum.el to highlight current line number
     )
   (mapcar 'el-get-source-name el-get-sources)))
 
