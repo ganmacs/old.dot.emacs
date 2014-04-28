@@ -26,7 +26,7 @@
    (:name dired-ex-isearch      :type github :pkgname "keiji0/elisp")
    (:name hiwin                 :type github :pkgname "tomoya/hiwin-mode")
    (:name dash-at-point         :type github :pkgname "stanaka/dash-at-point")
-   (:name auto-highlight-symbol :type github :pkgname "ganmacs/auto-highlight-symbol")
+   (:name auto-highlight-symbol :type github :pkgname "emacsmirror/auto-highlight-symbol")
    (:name rbenv                 :type github :pkgname "senny/rbenv.el")
    (:name emacs-anzu            :type github :pkgname "syohex/emacs-anzu")
    (:name key-combo             :type github :pkgname "uk-ar/key-combo")

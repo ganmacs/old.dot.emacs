@@ -14,7 +14,17 @@
                           coffee-mode
                           enh-ruby-mode
                           java-mode
+                          python-mode
+                          scheme-mode
                           )))
 
 (setq ahs-definition-face-list (append ahs-definition-face-list
                                        '(font-lock-constant-face)))
+
+(custom-set-faces
+ '(ahs-face ((t (:underline t))))
+ '(ahs-definition-face ((t (:underline t))))
+ '(ahs-plugin-defalt-face ((t (:underline t))))
+ '(ahs-plugin-whole-buffer-face ((t (:underline t))))
+ '(ahs-plugin-bod-face ((t (:underline t))))
+ )
