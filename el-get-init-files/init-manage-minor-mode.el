@@ -1,0 +1,1 @@
+(require 'manage-minor-mode)
