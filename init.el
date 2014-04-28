@@ -113,6 +113,7 @@
     scss-mode          ; Major mode for editing SCSS files(http://sass-lang.com)
     rsense             ; RSense client for Emacs
 ;    jedi               ; available  An awesome Python auto-completion for Emacs
+    jedi               ; An awesome Python auto-completion for Emacs
 
     ;; looks
     yascroll           ; Yet Another Scroll Bar Mode

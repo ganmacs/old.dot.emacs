@@ -2,4 +2,4 @@
 # name: self
 # key: s
 # --
-self.${1:var} = ${2:var}
+self.${1:var}
