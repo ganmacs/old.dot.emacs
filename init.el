@@ -33,6 +33,7 @@
    (:name dired-ex-isearch      :type github :pkgname "keiji0/elisp")
    (:name powerline             :type github :pkgname "milkypostman/powerline")
    (:name emacs-rotate          :type github :pkgname "daic-h/emacs-rotate")
+   (:name emacs-vim-region      :type github :pkgname "ongaeshi/emacs-vim-region")
    (:name pager                 :type github :pkgname "skaslev/emacs.d" :compile "pager.el")
    (:name helm-ls-git           :type github :pkgname "emacs-helm/helm-ls-git" :depends helm)
    (:name emacs-helm-ag         :type github :pkgname "syohex/emacs-helm-ag" :depends helm)
