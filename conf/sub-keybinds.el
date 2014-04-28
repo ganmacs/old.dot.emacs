@@ -1,13 +1,6 @@
 (provide 'sub-keybinds)
 
-;; c-?[ は使えない
-;; C-|]{}#&*_-+
-;; C-x ,C-p,C-b,b,C-c
-;; C-c w
-;; M-'"*C+
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; @OverwreiteKeybind ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (ido-mode nil)
 
 (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
 ;; -----------sheme--------------------

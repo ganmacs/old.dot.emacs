@@ -61,6 +61,7 @@
     js2-mode-hook
     tuareg-mode-hook
     enh-ruby-mode-hook
+    c-mode-common-hook
     )
   )
 

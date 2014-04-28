@@ -2,7 +2,8 @@
 
 (setq display-buffer-function 'popwin:display-buffer)
 
-(push '("^\*helm .+\*$" :regexp t :width 0.65 :position right) popwin:special-display-config)
+(push '("^\*helm .+\*$" :regexp t :width 0.4 :position right) popwin:special-display-config)
+(push '("^\*helm for files.+\*$" :regexp t :height 0.5) popwin:special-display-config)
 
 ;; M-x anything
 (push '("^\*anything.*\*$" :regexp t :width 0.5 :position right) popwin:special-display-config)

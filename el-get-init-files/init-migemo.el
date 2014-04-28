@@ -1,5 +1,3 @@
-(setq load-path (cons"~/.emacs.d/migemo/" load-path))
-
 (require 'migemo)
 (setq migemo-command "/usr/local/bin/cmigemo")
 (setq migemo-options '("-q" "--emacs"))

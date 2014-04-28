@@ -1,123 +1,81 @@
 (require 'powerline)
 
-;; powerline.el
- (defun arrow-right-xpm (color1 color2)
-   "Return an XPM right arrow string representing."
-   (format "/* XPM */
- static char * arrow_right[] = {
- \"12 18 2 1\",
- \". c %s\",
- \"  c %s\",
- \".           \",
- \"..          \",
- \"...         \",
- \"....        \",
- \".....       \",
- \"......      \",
- \".......     \",
- \"........    \",
- \".........   \",
- \".........   \",
- \"........    \",
- \".......     \",
- \"......      \",
- \".....       \",
- \"....        \",
- \"...         \",
- \"..          \",
- \".           \"};"  color1 color2))
+(defface powerline-active3
+  '((t (:background "#462743" :inherit mode-line-inactive
+                    :foreground "#eee")))
+  "Powerline face 3."
+  :group 'powerline)
 
-(defun arrow-left-xpm (color1 color2)
-  "Return an XPM right arrow string representing."
-  (format "/* XPM */
-static char * arrow_right[] = {
-\"12 18 2 1\",
-\". c %s\",
-\"  c %s\",
-\"           .\",
-\"          ..\",
-\"         ...\",
-\"        ....\",
-\"       .....\",
-\"      ......\",
-\"     .......\",
-\"    ........\",
-\"   .........\",
-\"   .........\",
-\"    ........\",
-\"     .......\",
-\"      ......\",
-\"       .....\",
-\"        ....\",
-\"         ...\",
-\"          ..\",
-\"           .\"};"  color2 color1))
+(defface powerline-inactive3
+  '((t (:background "#190E18" :inherit mode-line-inactive
+                    :foreground "#222")))
+  "Powerline face 3."
+  :group 'powerline)
+
+(defface powerline-active4
+  '((t (:background "#eee" :inherit mode-line-inactive
+                    :foreground "#462743")))
+  "Powerline face 4."
+  :group 'powerline)
+
+(defface powerline-inactive4
+  '((t (:background "#666" :inherit mode-line-inactive
+                    :foreground "#190E18")))
+  "Powerline face 4."
+  :group 'powerline)
+
+(defface powerline-active5
+  '((t (:background "#729fcf" :inherit mode-line-inactive
+                    :foreground "#222")))
+  "Powerline face 5."
+  :group 'powerline)
+
+(defface powerline-inactive5
+  '((t (:background "#1B3954" :inherit mode-line-inactive
+                    :foreground "gray22")))
+  "Powerline face 5."
+  :group 'powerline)
 
 
-(defconst color1 "#462743") ;; 紫
-;; (defconst color1 "#63B132") ;; 緑
-(defconst color2 "#ccc")
-(defconst color3 "#729fcf") ;; 青
-(defconst color4 "#444")
-(defconst color5 "#222")
-
-
-
-(defvar arrow-right-1 (create-image (arrow-right-xpm color1 color2) 'xpm t :ascent 'center))
-(defvar arrow-right-2 (create-image (arrow-right-xpm color2 color3) 'xpm t :ascent 'center))
-(defvar arrow-right-3 (create-image (arrow-right-xpm color3 "None") 'xpm t :ascent 'center))
-
-(defvar arrow-left-1  (create-image (arrow-left-xpm "None" color2) 'xpm t :ascent 'center))
-(defvar arrow-left-2  (create-image (arrow-left-xpm color2 color3) 'xpm t :ascent 'center))
-
-(setq-default mode-line-format
- (list
-        '(:eval (concat (propertize " %m " 'face 'mode-line-color-1)
-                        (propertize " " 'display arrow-right-1)))
-        '(:eval (concat (propertize " %b " 'face 'mode-line-color-2)
-                        (propertize " " 'display arrow-right-2)))
-        '(:eval (concat (propertize " %p " 'face 'mode-line-color-3)
-                        (propertize " " 'display arrow-right-3)))
-        ;; '("-"
-        ;;   minor-mode-alist)
-
-        ;; Justify right by filling with spaces to right fringe - 16
-        ;; (16 should be computed rahter than hardcoded)
-        '(:eval (propertize " " 'display '((space :align-to (- right-fringe 20)))))
-
-        '(:eval (concat (propertize " " 'display arrow-left-1)
-                        (propertize " %4l:%3c " 'face 'mode-line-color-2)))
-        '(:eval (concat (propertize " " 'display arrow-left-2)
-                        (propertize " %Z%*    " 'face 'mode-line-color-6)))
-))
-
-(make-face 'mode-line-color-1)
-(set-face-attribute 'mode-line-color-1 nil
-                    :foreground "#fff"
-                     ;;                     :foreground "#222"
-                    :background color1)
-
-(make-face 'mode-line-color-2)
-(set-face-attribute 'mode-line-color-2 nil
-;;                     :foreground "#333"
-                    :foreground "#462743"
-                    :background color2)
-
-(make-face 'mode-line-color-3)
-(set-face-attribute 'mode-line-color-3 nil
-                    :foreground "#333"
-                    :background color3)
-
-(make-face 'mode-line-color-6)
-(set-face-attribute 'mode-line-color-6 nil
-                    :foreground "#333"
-                    :background color3)
-
-(set-face-attribute 'mode-line nil
-                    :foreground "#fff"
-                    :background color4
-                    :box nil)
-
-(set-face-attribute 'mode-line-inactive nil
-                    :foreground "#fff"
-                    :background color5)
+(defun my-powerline-theme ()
+  "Setup the default mode-line."
+  (interactive)
+  (setq-default mode-line-format
+                '("%e"
+                  (:eval
+                   (let* ((active (powerline-selected-window-active))
+                          (mode-line (if active 'mode-line 'mode-line-inactive))
+                          (face1 (if active 'powerline-active1 'powerline-inactive1))
+                          (face2 (if active 'powerline-active2 'powerline-inactive2))
+                          (face3 (if active 'powerline-active3 'powerline-inactive3))
+                          (face4 (if active 'powerline-active4 'powerline-inactive4))
+                          (face5 (if active 'powerline-active5 'powerline-inactive5))
+                          (separator-left (intern (format "powerline-%s-%s"
+                                                          powerline-default-separator
+                                                          (car powerline-default-separator-dir))))
+                          (separator-right (intern (format "powerline-%s-%s"
+                                                           powerline-default-separator
+                                                           (cdr powerline-default-separator-dir))))
+                          (lhs (list (powerline-major-mode face3 'l)
+                                     (powerline-raw " " face3)
+                                     (funcall separator-left face3 face4)
+                                     (powerline-buffer-id face4 'l)
+                                     (powerline-narrow face3 'l)
+                                     (funcall separator-left face4 face5)
+                                     (powerline-raw "%p" face5 'r)
+                                     (powerline-narrow face3 'l)
+                                     (funcall separator-left face5 face1)
+                                     ))
+                          (rhs (list (powerline-vc face1 'r)
+                                     (funcall separator-right face1 face4)
+                                     (powerline-raw "%4l" face4 'l)
+                                     (powerline-raw ":" face4 'l)
+                                     (powerline-raw "%3c" face4 'r)
+                                     (funcall separator-right face4 face3)
+                                     (powerline-raw "%Z%*" face3 'l)
+                                     (powerline-raw " " face3)
+                                     )))
+                     (concat (powerline-render lhs)
+                             (powerline-fill face1 (powerline-width rhs))
+                             (powerline-render rhs)))))))
+(my-powerline-theme)

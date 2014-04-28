@@ -41,6 +41,7 @@
                          web-mode
                          eshell-mode
                          java-mode
+                         c-mode-common-hook
                          )))
 
 
@@ -72,6 +73,7 @@
 (add-hook 'clojure-mode-hook 'my-coding-mode)
 (add-hook 'web-mode-hook 'my-coding-mode)
 (add-hook 'java-mode-hook 'my-coding-mode)
+(add-hook 'c-mode-common-hook 'my-coding-mode)
 
 ;; 履歴の場所
 (setq ac-comphist-file "~/.emacs.d/log/ac-comphist.dat")

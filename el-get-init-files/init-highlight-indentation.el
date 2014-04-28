@@ -18,6 +18,8 @@
            (lambda () (highlight-indentation-current-column-mode)))
 (add-hook 'python-mode-hook
            (lambda () (highlight-indentation-current-column-mode)))
+(add-hook 'c-mode-common-hook
+           (lambda () (highlight-indentation-current-column-mode)))
 
 (set-face-background 'highlight-indentation-current-column-face "#222")
 
