@@ -36,7 +36,7 @@
 ;; 英語font
 (set-face-attribute 'default nil
                     :family "Menlo" ;; font
-                    :height 140)    ;; font size
+                    :height 130)    ;; font size
 ;; 日本語font
 (set-fontset-font
  nil 'japanese-jisx0208
@@ -71,13 +71,13 @@
 (setq recentf-max-menu-items 10)
 
 ;; 最近開いたファイルの保存数を増やす
-(setq recentf-max-saved-items 4000)
+(setq recentf-max-saved-items 500)
 
 ;; ミニバッファの履歴を保存する
 (savehist-mode 1)
 
 ;; ミニバッファの履歴の保存数を増やす
-(setq history-length 3000)
+(setq history-length 500)
 
 ;; whenever an external process changes a file underneath emacs, and there
 ;; was no unsaved changes in the corresponding buffer, just revert its
@@ -202,7 +202,7 @@
 (global-linum-mode t)
 
 ;; ウィンドウの透明化
-(add-to-list 'default-frame-alist '(alpha . (85 60)))
+(add-to-list 'default-frame-alist '(alpha . (90 60)))
 
 ;; 行間
 (setq-default line-spauing 0)

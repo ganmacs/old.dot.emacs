@@ -21,14 +21,8 @@
 ;; 補完を再設定 M-/をre-bind
 (global-set-key (kbd "C-j") 'dabbrev-expand)
 
-;; dired
-(global-set-key (kbd "C-S-j") 'dired-jump)
-
 ;; emacs終了をC-x C-cでさせない
 (global-unset-key (kbd "C-x C-c"))
-
-;;複数空白を一つの空白に
-(global-set-key (kbd "C-x C-n") 'just-one-space)
 
 ;; C-x C-hにhelpcommandを割り当て
 (global-set-key (kbd "C-x C-h") 'help-command)
@@ -54,6 +48,9 @@
 
 ;; pdfコピー時の濁点の分離をなおす
 (global-set-key (kbd "C-x RET u") 'ucs-normalize-NFC-buffer)
+
+
+(global-set-key (kbd "C-x C-n") 'just-one-space)
 
 ;; １行コメント
 (global-set-key (kbd "C-q") 'one-line-comment)
@@ -105,7 +102,6 @@
 
 ;; kill buffer
 (global-set-key (kbd "C-M-k") 'kill-this-buffer)
-
 
 (global-set-key (kbd "s-[") 'paren2-insert-inline)
 

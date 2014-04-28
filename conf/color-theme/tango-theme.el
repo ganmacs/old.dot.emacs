@@ -7,7 +7,7 @@
  '(default ((t (:background "#020202" :foreground "#eeeeec"))))
  '(mouse ((t (:foregound "#8ae234"))))
  '(cursor ((t (:foregound "#fce94f"))))
-; '(background-mode . dark)
+ ;; '(background-mode . dark)
  ;; '(help-highlight-face . underline)
  ;; '(ibuffer-dired-buffer-face . font-lock-function-name-face)
  ;; '(ibuffer-help-buffer-face . font-lock-comment-face)

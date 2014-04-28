@@ -39,7 +39,10 @@
    (:name emacs-helm-ag         :type github :pkgname "syohex/emacs-helm-ag" :depends helm)
    (:name helm-swoop            :type github :pkgname "ShingoFukuyama/helm-swoop" :depends helm)
    (:name smartparens           :type github :pkgname "Fuco1/smartparens" :depends dash)
-;;    (:name ido-vertical-mode     :type github :pkgname "gempesaw/ido-vertical-mode.el")
+   (:name manage-minor-mode     :type github :pkgname "ShingoFukuyama/manage-minor-mode")
+   (:name tuareg-mode           :type github :pkgname "ocaml/tuareg")
+   (:name google                :type github :pkgname "hober/google-el")
+   (:name helm-google           :type github :pkgname "steckerhalter/helm-google" :depends google)
 
    (:name cider                 :type github :pkgname "clojure-emacs/cider"
           :depends (pkg-info dash clojure-mode epl))
@@ -92,6 +95,8 @@
     flycheck           ; On-the-fly syntax checking extension
     recentf-ext        ; Recentf extensions
     helm-etags-plus    ; etags plus for helm-mode
+    move-text          ; Move current line or region with M-up or M-down.
+    evil               ; Evil is an extensible vi layer for Emacs.
 
     ;; key env
     smartrep           ; Support sequential operation which omitted prefix keys.

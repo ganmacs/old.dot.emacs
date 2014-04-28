@@ -54,17 +54,6 @@
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
 
-;; (define-key ruby-mode-map (kbd "C-M-p") 'chrome-scroll-up)
-;; (define-key ruby-mode-map (kbd "C-M-n") 'chrome-scroll-down)
-;; (define-key ruby-mode-map (kbd "C-M-r") 'chrome-reload)
-;; (define-key ruby-mode-map (kbd "s-r") 'chrome-reload)
-;; (define-key ruby-mode-map (kbd "C-M-f") 'chrome-next-tab)
-;; (define-key ruby-mode-map (kbd "C-M-b") 'chrome-previous-tab)
-
-;; (define-key ruby-mode-map (kbd "s-b") 'ruby-backward-sexp)
-;; (define-key ruby-mode-map (kbd "s-f") 'ruby-forward-sexp)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; @ForChrome ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "C-M-f") 'chrome-next-tab)
 (global-set-key [C-tab] 'chrome-next-tab)

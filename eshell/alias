@@ -1,0 +1,10 @@
+alias nil  $*
+alias l ls -l $*
+alias la ls -a $*
+alias be bundle exec $*
+alias less view-file $1
+alias emacs find-file $1
+alias coc coffee -c $*
+alias term open -a /Applications/iTerm.app $1
+alias binit bundle init; bundle install --path vendor/bundle
+alias rinit bundle exec rails new . --skip-bundle

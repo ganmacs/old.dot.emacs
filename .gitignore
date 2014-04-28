@@ -6,7 +6,8 @@
 /el-get-init-files/**/.*
 /el-get/*
 tramp
-eshell/*
+eshell/histroy
+eshell/lastdir
 tmp/*
 history
 .mc-lists.el
@@ -18,3 +19,4 @@ history
 /projectile.cache
 log/*
 /undohist
+.python-environments
