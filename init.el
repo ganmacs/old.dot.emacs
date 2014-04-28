@@ -57,17 +57,6 @@
           :url "http://glozer.net/code/ssh-agent.el"
           :compile "ssh-agent.el"
           )
-   (:name magit
-          :type github
-          :pkgname "magit/magit"
-          :depends (cl-lib git-modes)
-          :checkout "5ed79cb12033a2606ebaea18123e8996f19690ed" ;ver 1.2.0
-          :info "."
-          :build (if (version<= "24.3" emacs-version)
-                     `(("make" ,(format "EMACS=%s" el-get-emacs) "all"))
-                   `(("make" ,(format "EMACS=%s" el-get-emacs) "docs")))
-          :build/berkeley-unix (("touch" "`find . -name Makefile`") ("gmake"))
-          )
    ))
 
 ;; now set our own packages
@@ -77,6 +66,7 @@
   '(
     ;; basic
     el-get             ; el-get is self-hosting
+    magit              ; It's Magit! An Emacs mode for Git.
     helm               ; Emacs incremental and narrowing framework
     auto-complete      ; The most intelligent auto-completion extension.
     undo-tree          ; Treat undo history as a tree
