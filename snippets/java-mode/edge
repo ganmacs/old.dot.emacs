@@ -2,11 +2,11 @@
 # name: edge
 # key: edge
 # --
-class Edge {
+static class edge {
   public int to;
   public int from;
 
-  public Edge(int to, int from) {
+  public edge(int to, int from) {
     this.to = to;
     this.from = from;
   }
