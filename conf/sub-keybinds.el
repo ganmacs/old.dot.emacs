@@ -9,6 +9,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; @OverwreiteKeybind ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (ido-mode nil)
 
+;; ------------C Hook------------------
+(add-hook 'c-mode-common-hook
+          '(lambda ()
+             (define-key c-mode-base-map  (kbd "M-j") 'duplicate-thing)
+             ))
 ;; ------------Java Hook------------------
 (add-hook 'java-mode-hook
           '(lambda ()

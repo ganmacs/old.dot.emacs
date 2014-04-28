@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: my-for
+# key: f
+# --
+for (i = ${1: 0}; i < ${2:N}; ${3:i++}) {
+    $0
+}
