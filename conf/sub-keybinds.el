@@ -72,6 +72,33 @@
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; @for iTerm ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun execute-on-iterm (command)
+  (interactive "MCommand: ")
+  (do-applescript
+   (format "tell application \"iTerm\"
+              activate
+              tell current session of current terminal
+                write text \"%s\"
+              end tell
+            end tell"
+           command)))
+
+(defun cd-on-iterm ()
+  (interactive)
+  (execute-on-iterm
+   (format "cd %s" default-directory)))
+
+(defun rspec-on-iterm ()
+  (interactive)
+  (execute-on-iterm
+   (format "bundle exec rspec %s:%s" buffer-file-name (line-number-at-pos))))
+
+(global-set-key (kbd "C-c d") 'cd-on-iterm)
+(define-key ruby-mode-map (kbd "C-c r") 'rspec-on-iterm)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; @ForChrome ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "C-M-f") 'chrome-next-tab)
 (global-set-key [C-tab] 'chrome-next-tab)
