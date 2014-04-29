@@ -87,6 +87,7 @@
     helm-etags-plus    ; etags plus for helm-mode
     move-text          ; Move current line or region with M-up or M-down.
     evil               ; Evil is an extensible vi layer for Emacs.
+    guide-key          ; Guide the following key bindings automatically and dynamically.
 
     ;; key env
     smartrep           ; Support sequential operation which omitted prefix keys.
