@@ -1,6 +1,8 @@
 ;; 読み込みエラーした時の最低限の設定
 (provide 'initialize)
 
+(require 'utility)
+
 ;; ホームディレクトリに移動
 (cd "~/")
 

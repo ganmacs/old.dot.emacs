@@ -33,7 +33,6 @@
    (:name dired-ex-isearch      :type github :pkgname "keiji0/elisp")
    (:name powerline             :type github :pkgname "milkypostman/powerline")
    (:name emacs-rotate          :type github :pkgname "daic-h/emacs-rotate")
-   (:name emacs-vim-region      :type github :pkgname "ongaeshi/emacs-vim-region")
    (:name pager                 :type github :pkgname "skaslev/emacs.d" :compile "pager.el")
    (:name helm-ls-git           :type github :pkgname "emacs-helm/helm-ls-git" :depends helm)
    (:name emacs-helm-ag         :type github :pkgname "syohex/emacs-helm-ag" :depends helm)
@@ -86,8 +85,7 @@
     recentf-ext        ; Recentf extensions
     helm-etags-plus    ; etags plus for helm-mode
     move-text          ; Move current line or region with M-up or M-down.
-    evil               ; Evil is an extensible vi layer for Emacs.
-    guide-key          ; Guide the following key bindings automatically and dynamically.
+    ; evil               ; Evil is an extensible vi layer for Emacs.
 
     ;; key env
     smartrep           ; Support sequential operation which omitted prefix keys.
@@ -106,8 +104,8 @@
     markdown-mode      ; Major mode to edit Markdown files in Emacs
     yaml-mode          ; Simple major mode to edit YAML file for emacs
     scss-mode          ; Major mode for editing SCSS files(http://sass-lang.com)
-    rsense             ; RSense client for Emacs
     rspec-mode         ; Enhance ruby-mode for RSpec
+    rsense             ; RSense client for Emacs
     rinari             ; Rinari Is Not A Rails IDE
     jedi               ; An awesome Python auto-completion for Emacs
 

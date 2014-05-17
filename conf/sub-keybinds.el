@@ -25,37 +25,39 @@
 (autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
 
 (define-key global-map "\C-cG" 'scheme-other-window)
-
-
 ;; ------------C Hook------------------
-(add-hook 'c-mode-common-hook
-          '(lambda ()
-             (define-key c-mode-base-map  (kbd "M-j") 'duplicate-thing)
-             ))
+(add-hook-lambda 'c-mode-common-hook
+                 (define-key c-mode-base-map  (kbd "M-j") 'duplicate-thing))
+
+
 ;; ------------Java Hook------------------
-(add-hook 'java-mode-hook
-          '(lambda ()
-             (setq c-basic-offset 2)
-             (define-key java-mode-map (kbd "M-j") 'duplicate-thing)
-             ))
+(add-hook-lambda 'java-mode-hook
+                 (setq c-basic-offset 2)
+                 (define-key java-mode-map (kbd "M-j") 'duplicate-thing))
 
 ;; -------------Python Hook----------------
-(add-hook 'python-mode-hook
-          '(lambda ()
-             (setq python-indent 2)
-             (setq indent-tabs-mod nil)
-             ))
+(add-hook-lambda 'python-mode-hook
+                 (setq python-indent 2)
+                 (setq indent-tabs-mod nil))
 
 
 ;;-------------- @ruby-mode ----------------
-(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.thor$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
-(add-hook 'ruby-mode-hook
-          '(lambda () (setq ruby-insert-encoding-magic-comment nil)))
 
+(append-to-list 'auto-mode-alist
+                ("Gemfile" . ruby-mode)
+                ("\\.thor$" . ruby-mode)
+                ("\\.rake$" . ruby-mode)
+                ("Guardfile$" . ruby-mode)
+                ("\\.env$" . ruby-mode))
 
+(add-hook-lambda 'ruby-mode-hook
+                 (setq ruby-insert-encoding-magic-comment nil)
+                 (define-key ruby-mode-map (kbd "C-M-p") 'chrome-scroll-up)
+                 (define-key ruby-mode-map (kbd "C-M-n") 'chrome-scroll-down)
+                 (define-key ruby-mode-map (kbd "C-M-r") 'chrome-reload)
+                 (define-key ruby-mode-map (kbd "s-r") 'chrome-reload)
+                 (define-key ruby-mode-map (kbd "C-M-f") 'chrome-next-tab)
+                 (define-key ruby-mode-map (kbd "C-M-b") 'chrome-previous-tab))
 
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
@@ -94,7 +96,7 @@
 (defun rspec-on-iterm ()
   (interactive)
   (execute-on-iterm
-   (format "bundle exec rspec %s:%s" buffer-file-name (line-number-at-pos))))
+   (format "bundle exec spring rspec %s:%s" buffer-file-name (line-number-at-pos))))
 
 (global-set-key (kbd "C-c d") 'cd-on-iterm)
 (define-key ruby-mode-map (kbd "C-c r") 'rspec-on-iterm)

@@ -7,7 +7,6 @@
   "scss-mode-hook"
   (and
    (set (make-local-variable 'css-indent-offset) 2)
-   (set (make-local-variable 'scss-compile-at-save) nil)
-   ))
+   (set (make-local-variable 'scss-compile-at-save) nil)))
 
-(add-hook 'scss-mode-hook '(lambda() (scss-custom)))
+(add-hook-lambda 'scss-mode-hook (scss-custom))

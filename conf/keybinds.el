@@ -28,7 +28,7 @@
 (global-set-key (kbd "C-x C-h") 'help-command)
 
 ;; previous-multi-windowがループしないのでother-windowの逆
-(global-set-key (kbd "C-x o") (lambda () (interactive) (other-window -1)))
+(global-set-key-lambda (kbd "C-x o") (other-window -1))
 
 ;; タブ文字、全角空白、文末の空白の色付け
 (global-set-key (kbd "C-c w") 'global-whitespace-mode)
@@ -49,11 +49,14 @@
 ;; pdfコピー時の濁点の分離をなおす
 (global-set-key (kbd "C-x RET u") 'ucs-normalize-NFC-buffer)
 
-
+;; スペースを1つに
 (global-set-key (kbd "C-x C-n") 'just-one-space)
 
 ;; １行コメント
 (global-set-key (kbd "C-q") 'one-line-comment)
+
+;; いい感じにマーク
+(global-set-key (kbd "C-#") 'mark-sexp)
 
 ;; ------------shift + ctrl-------------
 (global-set-key (kbd "C-S-f") 'next-space)
@@ -103,12 +106,11 @@
 ;; kill buffer
 (global-set-key (kbd "C-M-k") 'kill-this-buffer)
 
-(global-set-key (kbd "s-[") 'paren2-insert-inline)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; @Function ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; １行コピー
 (defun copy-whole-line (&optional arg)
   "Copy current line."
@@ -139,13 +141,6 @@
                                 (progn (forward-visible-line arg) (point))))))
   (message (substring (car kill-ring-yank-pointer) 0 -1)))
 
-;; kill-lineで行が連結したときにインデントを減らす
-(defadvice kill-line (before kill-line-and-fixup activate)
-  (when (and (not (bolp)) (eolp))
-    (forward-char)
-    (fixup-whitespace)
-    (backward-char)))
-
 ;; カーソル位置の単語を削除
 (defun kill-word-at-point ()
   (interactive)
@@ -163,28 +158,7 @@
             recentf-list)
     (goto-char (point-min))
     (search-forward keyword)
-    (dired (file-name-directory (thing-at-point 'line)))
-    ))
-
-
-;; 範囲指定していないとき、前の単語を削除
-(defadvice kill-region (around kill-word-or-kill-region activate)
-  (if (and (called-interactively-p 'interactive) transient-mark-mode (not mark-active))
-      (kill-word-at-point)
-    ad-do-it))
-
-;; 範囲指定していないとき、1行削除
-(defadvice kill-ring-save
-  (around kill-ring-save-or-copy-line-as-kill (beg end) activate)
-  (interactive (list (point) (mark)))
-  (if (and (called-interactively-p 'any) (not mark-active))
-      (copy-whole-line)
-      ad-do-it))
-
-(defadvice dired-copy-filename-as-kill (before four-prefix activate)
-  (interactive "P")
-  (when (eq 4 (prefix-numeric-value (ad-get-arg 0)))
-    (ad-set-arg 0 0)))
+    (dired (file-name-directory (thing-at-point 'line)))))
 
 (defun kill-all-buffers()
   (interactive)
@@ -193,38 +167,16 @@
     (unless (member (buffer-name) '("*scratch*" "*Messages*"))
       (kill-buffer buf))))
 
-;; vim移動
-(defvar vimlike-f-recent-char nil)
-(defvar vimlike-f-recent-func nil)
-
 (defun vimlike-f (char)
-  "search to forward char into current line and move point (vim 'f' command)"
-  ;;   (interactive "cSearch to forward char: ")
   (when (= (char-after (point)) char)
     (forward-char))
   (search-forward (char-to-string char) (point-at-eol) nil 1)
-  ;; (migemo-forward (char-to-string char) (point-at-eol) t 1)
-  (backward-char)
-  (setq vimlike-f-recent-search-char char
-        vimlike-f-recent-search-func 'vimlike-f))
+  (backward-char))
 
 (defun vimlike-F (char)
-  "search to forward char into current line and move point. (vim 'F' command)"
-  ;;   (interactive "cSearch to backward char: ")
-  (search-backward (char-to-string char) (point-at-bol) nil 1)
-  ;;   (migemo-backward (char-to-string char) (point-at-bol) t 1)
-  (setq vimlike-f-recent-search-char char
-        vimlike-f-recent-search-func 'vimlike-F))
+  (search-backward (char-to-string char) (point-at-bol) nil 1))
 
-(defun vimlike-semicolon ()
-  "search repeat recent vimlike 'f' or 'F' search char (vim ';' command)"
-  (interactive)
-  (if (and vimlike-f-recent-search-char
-           vimlike-f-recent-search-func)
-      (funcall vimlike-f-recent-search-func vimlike-f-recent-search-char)
-    (message "Empty recent search char.")))
-
-(defun add-keys-to-vim-likesemiko (prefix c &optional mode)
+(defun add-keys-to-vim-likef (prefix c &optional mode)
   (define-key global-map
     (read-kbd-macro (concat prefix (string c)))
     `(lambda ()
@@ -233,48 +185,30 @@
                     #'vimlike-F
                   #'vimlike-f) ,c))))
 
-(loop for c from ?0 to ?9 do (add-keys-to-vim-likesemiko "H-" c))
-(loop for c from ?a to ?z do (add-keys-to-vim-likesemiko "H-" c))
-(loop for c from ?! to ?~ do (add-keys-to-vim-likesemiko "H-" c))
-(loop for c from ?0 to ?9 do (add-keys-to-vim-likesemiko "H-C-" c 'word))
-(loop for c from ?a to ?z do (add-keys-to-vim-likesemiko "H-C-" c 'word))
-(loop for c from ?! to ?~ do (add-keys-to-vim-likesemiko "H-C-" c 'word))
-;; スペースだけ書いておく
-;; (global-set-key (kbd "s-<return>") (lambda () (interactive) (vimlike-f ? )))
-;; (global-set-key (kbd "H-<return>") (lambda () (interactive) (vimlike-F ? )))
+(loop for c from ?0 to ?9 do (add-keys-to-vim-likef "H-" c))
+(loop for c from ?a to ?z do (add-keys-to-vim-likef "H-" c))
+(loop for c from ?! to ?~ do (add-keys-to-vim-likef "H-" c))
+(loop for c from ?0 to ?9 do (add-keys-to-vim-likef "H-C-" c 'word))
+(loop for c from ?a to ?z do (add-keys-to-vim-likef "H-C-" c 'word))
+(loop for c from ?! to ?~ do (add-keys-to-vim-likef "H-C-" c 'word))
+
+(setq inline-separator "^\s()[]:;,=.\n{}")
 
 ;; 文字列をクオートで囲む
 (defun quote-insert-inline ()
   (interactive)
-  (skip-chars-backward "^\s()[]:;,=.\n{}")
+  (skip-chars-backward inline-separator)
   (insert "'")
-  (skip-chars-forward "^\s()[]:;,=.\n{}")
+  (skip-chars-forward inline-separator)
   (insert "'"))
 
 ;; 文字列をダブルクオートで囲む
 (defun double-quote-insert-inline ()
   (interactive)
-  (skip-chars-backward "^\s()[]:;,=.\n{}")
+  (skip-chars-backward inline-separator)
   (insert "\"")
-  (skip-chars-forward "^\s()[]:;,=.\n{}")
+  (skip-chars-forward inline-separator)
   (insert "\""))
-
-;; 文字列をシンボル化する
-(defun make-string-to-symbol ()
-  (interactive)
-  (skip-chars-backward "^\s()[]:;,=.\n{}")
-  (insert ":")
-  (skip-chars-forward "^\s()[]:;,=.\n{}")
-  )
-
-(defun paren2-insert-inline ()
-  (interactive)
-  (skip-chars-backward "^\s()[]:;,=.\n{}")
-  (insert "[")
-  (skip-chars-forward "^\s()[]:;,=.\n{}")
-  (insert "]")
-  (backward-char))
-
 
 ;; 次の空白に移動
 (defun next-space ()
@@ -292,21 +226,22 @@
 ;; 1行コメント
 (defun one-line-comment ()
   (interactive)
-  (move-beginning-of-line 1)
-  (set-mark (point))
-  (move-end-of-line 1)
-  (comment-dwim 1))
+  (save-excursion
+    (beginning-of-line)
+    (set-mark (point))
+    (end-of-line)
+    (comment-or-uncomment-region (region-beginning) (region-end))))
 
 ;; 文末いって改行
 (defun end-line-indent ()
   (interactive)
-  (move-end-of-line 1)
+  (end-of-line)
   (newline-and-indent))
 
 ;; 文頭いってから改行
 (defun begin-line-indent ()
    (interactive)
-   (move-beginning-of-line 1)
+   (beginning-of-line)
    (newline-and-indent)
    (previous-line)
    (indent-for-tab-command))
@@ -316,6 +251,35 @@
   (interactive)
   (transpose-chars -1)
   (forward-char))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; @Advice ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; kill-lineで行が連結したときにインデントを減らす
+(defadvice kill-line (before kill-line-and-fixup activate)
+  (when (and (not (bolp)) (eolp))
+    (forward-char)
+    (fixup-whitespace)
+    (backward-char)))
+
+;; 範囲指定していないとき、前の単語を削除
+(defadvice kill-region (around kill-word-or-kill-region activate)
+  (if (and (called-interactively-p 'interactive) transient-mark-mode (not mark-active))
+      (kill-word-at-point)
+    ad-do-it))
+
+;; 範囲指定していないとき、1行削除
+(defadvice kill-ring-save (around kill-ring-save-or-copy-line-as-kill (beg end) activate)
+  (interactive (list (point) (mark)))
+  (if (and (called-interactively-p 'any) (not mark-active))
+      (copy-whole-line)
+      ad-do-it))
+
+(defadvice dired-copy-filename-as-kill (before four-prefix activate)
+  (interactive "P")
+  (when (eq 4 (prefix-numeric-value (ad-get-arg 0)))
+    (ad-set-arg 0 0)))
 
 ;;; 選択範囲をisearch
 (defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)

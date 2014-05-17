@@ -1,25 +1,38 @@
 (require 'highlight-indentation)
 
-(add-hook 'ruby-mode-hook
-          (lambda () (highlight-indentation-current-column-mode)))
-(add-hook 'coffee-mode-hook
-           (lambda () (highlight-indentation-current-column-mode)))
-;; (add-hook 'web-mode-hook
+(add-hook-lambda 'ruby-mode-hook
+                 (highlight-indentation-current-column-mode))
+
+(add-hook-lambda 'coffee-mode-hook
+                 (highlight-indentation-current-column-mode))
+
+;; (add-hook-lambda 'web-mode-hook
 ;;           (lambda () (highlight-indentation-current-column-mode)))
-(add-hook 'js2-mode-hook
-          (lambda () (highlight-indentation-current-column-mode)))
-(add-hook 'rhtml-mode-hook
-          (lambda () (highlight-indentation-current-column-mode)))
-(add-hook 'enh-ruby-mode-hook
-           (lambda () (highlight-indentation-current-column-mode)))
-(add-hook 'clojure-mode-hook
-           (lambda () (highlight-indentation-current-column-mode)))
-(add-hook 'java-mode-hook
-           (lambda () (highlight-indentation-current-column-mode)))
-(add-hook 'python-mode-hook
-           (lambda () (highlight-indentation-current-column-mode)))
-(add-hook 'c-mode-common-hook
-           (lambda () (highlight-indentation-current-column-mode)))
+
+(add-hook-lambda 'js2-mode-hook
+                 (highlight-indentation-current-column-mode))
+
+(add-hook-lambda 'rhtml-mode-hook
+                 (highlight-indentation-current-column-mode))
+
+(add-hook-lambda 'enh-ruby-mode-hook
+                 (highlight-indentation-current-column-mode))
+
+(add-hook-lambda 'clojure-mode-hook
+                 (highlight-indentation-current-column-mode))
+
+(add-hook-lambda 'java-mode-hook
+                 (highlight-indentation-current-column-mode))
+
+(add-hook-lambda 'python-mode-hook
+                 (highlight-indentation-current-column-mode))
+
+
+(add-hook-lambda 'c-mode-common-hook
+                 (highlight-indentation-current-column-mode))
+
+(add-hook-lambda 'scheme-mode-hook
+                 (highlight-indentation-current-column-mode))
 
 (set-face-background 'highlight-indentation-current-column-face "#222")
 

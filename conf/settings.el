@@ -27,11 +27,10 @@
 ;; Macの場合ファイル名はutf-8-hfs
 ;;(setq file-name-coding-system 'utf-8)
 ;;(setq locale-coding-system 'utf-8)
-(if (eq window-system 'ns)
-   (progn
-     (require 'ucs-normalize)
-     (setq file-name-coding-system 'utf-8-hfs)
-     (setq locale-coding-system 'utf-8-hfs)))
+(when (eq window-system 'ns)
+  (require 'ucs-normalize)
+  (setq file-name-coding-system 'utf-8-hfs)
+  (setq locale-coding-system 'utf-8-hfs))
 
 ;; 英語font
 (set-face-attribute 'default nil
@@ -114,9 +113,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; @BasicTypingRules ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; 英数は半角に
-;;(setq skk-number-style nil)
 
 ;; Undo回数制限
 (setq undo-limit 100000)
@@ -210,6 +206,9 @@
 ;; マーク領域を色付け
 (setq transient-mark-mode t)
 
+;; タイトルバーにフルパス表示
+(setq frame-title-format (format "%%f" (system-name)))
+
 ;; 括弧の範囲内を強調表示
 (show-paren-mode t)
 (setq show-paren-delay 0)
@@ -225,18 +224,12 @@
 
 ;; マウススクロール調整
 (mouse-wheel-mode)
-(global-set-key [wheel-up]
-                '(lambda () "" (interactive) (scroll-down 1)))
-(global-set-key [wheel-down]
-                '(lambda () "" (interactive) (scroll-up 1)))
-(global-set-key [double-wheel-up]
-                '(lambda () "" (interactive) (scroll-down 1)))
-(global-set-key [double-wheel-down]
-                '(lambda () "" (interactive) (scroll-up 1)))
-(global-set-key [triple-wheel-up]
-                '(lambda () "" (interactive) (scroll-down 2)))
-(global-set-key [triple-wheel-down]
-                '(lambda () "" (interactive) (scroll-up 2)))
+(global-set-key-lambda [wheel-up] (scroll-down 1))
+(global-set-key-lambda [wheel-down] (scroll-up 1))
+(global-set-key-lambda [double-wheel-up] (scroll-down 1))
+(global-set-key-lambda [double-wheel-down] (scroll-up 1))
+(global-set-key-lambda [triple-wheel-up] (scroll-down 2))
+(global-set-key-lambda [triple-wheel-down] (scroll-up 2))
 
 (defface my-face-b-1 '((t (:background "DeepPink"))) nil)
 (defvar my-face-b-1 'my-face-b-1)
@@ -246,10 +239,8 @@
    '(("　" 0 my-face-b-1 append))))
 (ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
 (ad-activate 'font-lock-mode)
-(add-hook 'find-file-hooks '(lambda ()
-                              (if font-lock-mode
-                                  nil
-                                (font-lock-mode t))))
+(add-hook-lambda 'find-file-hooks
+                 (if font-lock-mode nil (font-lock-mode t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; @require ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -272,7 +263,7 @@
 ;; ----------------- @filecache ------------------------
 (require 'filecache)
 (file-cache-add-directory-list
- (list "~/.emacs.d" "~/.emacs.d/config" "~/Dropbox/memorandum"))
+ '("~/.emacs.d" "~/.emacs.d/config" "~/Dropbox/memorandum"))
 
 (define-key minibuffer-local-completion-map "\C-x\C-f"
   'file-cache-minibuffer-complete)
@@ -330,8 +321,7 @@
 (require 'ucs-normalize)
 (defun ucs-normalize-NFC-buffer ()
   (interactive)
-  (ucs-normalize-NFC-region (point-min) (point-max))
-  )
+  (ucs-normalize-NFC-region (point-min) (point-max)))
 
 ;; ----------------- @align ------------------------
 
@@ -445,15 +435,14 @@
                ".pdf"))
       buffer-file-name))))
 
-(add-hook 'yatex-mode-hook
-          '(lambda ()
-             (auto-fill-mode -1)
-             (reftex-mode 1)
-             (define-key YaTeX-mode-map (kbd "C-c s") 'skim-forward-search)
-             (define-key YaTeX-mode-map (kbd "<f8>") 'YaTeX-typeset-menu)
-             (define-key YaTeX-mode-map (kbd "s-R") 'YaTeX-typeset-menu)
-             (define-key reftex-mode-map (concat YaTeX-prefix ">") 'YaTeX-comment-region)
-             (define-key reftex-mode-map (concat YaTeX-prefix "<") 'YaTeX-uncomment-region)))
+(add-hook-lambda 'yatex-mode-hook
+                 (auto-fill-mode -1)
+                 (reftex-mode 1)
+                 (define-key YaTeX-mode-map (kbd "C-c s") 'skim-forward-search)
+                 (define-key YaTeX-mode-map (kbd "<f8>") 'YaTeX-typeset-menu)
+                 (define-key YaTeX-mode-map (kbd "s-R") 'YaTeX-typeset-menu)
+                 (define-key reftex-mode-map (concat YaTeX-prefix ">") 'YaTeX-comment-region)
+                 (define-key reftex-mode-map (concat YaTeX-prefix "<") 'YaTeX-uncomment-region))
 
 ;; ;; -----------------  @saveplace ------------------------
 
