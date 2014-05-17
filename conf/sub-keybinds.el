@@ -5,26 +5,20 @@
 (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
 ;; -----------sheme--------------------
 
-(setq process-coding-system-alist
-      (cons '("gosh" utf-8 . utf-8) process-coding-system-alist))
-(setq scheme-program-name "/usr/local/bin/gosh -i")
-
-(defun scheme-other-window ()
-  "Run Gauche on other window"
-  (interactive)
-  (split-window-horizontally (/ (frame-width) 2))
-  (let ((buf-name (buffer-name (current-buffer))))
-    (scheme-mode)
-    (switch-to-buffer-other-window
-     (get-buffer-create "*scheme*"))
-    (run-scheme scheme-program-name)
-    (switch-to-buffer-other-window
-     (get-buffer-create buf-name))))
-
 (autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
 (autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
 
-(define-key global-map "\C-cG" 'scheme-other-window)
+(add-to-list 'process-coding-system-alist '("gosh" utf-8 . utf-8))
+(setq scheme-program-name "/usr/local/bin/gosh -i")
+
+(defun scheme-other-windows ()
+  (interactive)
+  (save-selected-window
+    (select-window (split-window-horizontally))
+    (run-scheme scheme-program-name)))
+
+(define-key global-map "\C-cG" 'scheme-other-windows)
+
 ;; ------------C Hook------------------
 (add-hook-lambda 'c-mode-common-hook
                  (define-key c-mode-base-map  (kbd "M-j") 'duplicate-thing))
