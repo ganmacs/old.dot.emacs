@@ -41,6 +41,7 @@
    (:name manage-minor-mode     :type github :pkgname "ShingoFukuyama/manage-minor-mode")
    (:name tuareg-mode           :type github :pkgname "ocaml/tuareg")
    (:name google                :type github :pkgname "hober/google-el")
+   (:name emacs-git-grep        :type github :pkgname "ganmacs/emacs-git-grep" :depends helm)
    (:name helm-google           :type github :pkgname "steckerhalter/helm-google" :depends google)
 
    (:name cider                 :type github :pkgname "clojure-emacs/cider"
