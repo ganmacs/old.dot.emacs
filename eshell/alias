@@ -8,3 +8,4 @@ alias coc coffee -c $*
 alias term open -a /Applications/iTerm.app $1
 alias binit bundle init; bundle install --path vendor/bundle
 alias rinit bundle exec rails new . --skip-bundle
+alias gout g++ $* && ./a.out

@@ -93,6 +93,33 @@
     )
   )
 
+;; c++-mode-----------------------------------------
+
+(defvar kb-c++
+  '((","  . ", ")
+    ("="  . (" = " " == "))
+    ("+"  . (" + " "++" key-combo-execute-original))
+    ("/"  . (key-combo-execute-original " / " "//"))
+    ("-"  . (key-combo-execute-original " - " "--"))
+    (">=" . " >= ")
+    (">>=" . " >>= ")
+    ("<<=" . " <<= ")
+    ("=*" . " =* ")
+    ("+=" . " += ")
+    ("-=" . " -= ")
+    (">" . (key-combo-execute-original " > " " >> "))
+    ("%"  . (key-combo-execute-original " % "))
+    ("%="  . " %= ")
+    ("!" . key-combo-execute-original)
+    ("!="  . " != " )
+    ("&"  . (key-combo-execute-original " && "))
+    ("*="  . " *= " )
+    ("<" . (key-combo-execute-original " < " " << "))
+    ("<=" . " <= ")
+    ("/=" . " /= ")
+    )
+  )
+
 
 
 ;;ruby-mode --------------------------------------------------------
@@ -245,6 +272,9 @@
   (key-combo-define-hook 'java-mode-hook
                          'kb-java-load
                          kb-java)
+  (key-combo-define-hook 'c++-mode-hook
+                         'kb-c++-load
+                         kb-c++)
   )
 
 (my-key-combo-load)
