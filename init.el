@@ -109,6 +109,8 @@
     rsense             ; RSense client for Emacs
     rinari             ; Rinari Is Not A Rails IDE
     jedi               ; An awesome Python auto-completion for Emacs
+    haskell-mode       ; A Haskell editing mode
+    ghc-mod            ; Happy Haskell programming
 
     ;; looks
     yascroll           ; Yet Another Scroll Bar Mode

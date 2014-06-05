@@ -120,6 +120,25 @@
     )
   )
 
+;; haskell-mode-----------------------------------------
+
+(defvar kb-haskell
+  '((","  . ", ")
+    ("="  . (" = " " == "))
+    ("+"  . (" + " " ++ " key-combo-execute-original))
+    ("*"  . (key-combo-execute-original " * " " ** "))
+    ("/"  . (key-combo-execute-original " / " "//"))
+    ("-"  . (key-combo-execute-original " - " "--"))
+    (">" . (key-combo-execute-original " > "))
+    ("<" . (key-combo-execute-original " < "))
+    (":" . (key-combo-execute-original " :: " " : "))
+    ("." . (key-combo-execute-original " . "))
+    ("|"  . (key-combo-execute-original " | " " || "))
+    ("=>" . " => ")
+    ("<=" . " <= ")
+    ("<-" . " <- ")
+    ("->" . " -> ")
+    ))
 
 
 ;;ruby-mode --------------------------------------------------------
@@ -275,6 +294,9 @@
   (key-combo-define-hook 'c++-mode-hook
                          'kb-c++-load
                          kb-c++)
+  (key-combo-define-hook 'haskell-mode-hook
+                         'kb-haskell-load
+                         kb-haskell)
   )
 
 (my-key-combo-load)

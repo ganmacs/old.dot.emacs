@@ -12,6 +12,7 @@
                 "/Applications/mongodb-osx-x86_64-1.8.2/bin:"
                 (concat (getenv "HOME") "/.rbenv/shims:")
                 (concat (getenv "HOME") "/.rbenv/bin:")
+                (concat (getenv "HOME") "/.cabal/bin:")
                 "/usr/texbin:"
                 "/usr/local/share/npm/bin:"
                 (concat (getenv "HOME") "/node_modules/.bin:")
