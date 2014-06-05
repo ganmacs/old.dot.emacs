@@ -73,7 +73,6 @@
     ("+"  . (" + " "++" key-combo-execute-original))
     ("/"  . (key-combo-execute-original " / " "//"))
     ("-"  . (key-combo-execute-original " - " "--"))
-    ("*"  . (key-combo-execute-original " * ") )
     (">=" . " >= ")
     (">>=" . " >>= ")
     ("<<=" . " <<= ")

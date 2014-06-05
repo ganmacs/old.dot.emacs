@@ -2,7 +2,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; @OverwreiteKeybind ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; ------------------coq--------------------------
+
 (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+
 ;; -----------sheme--------------------
 
 (autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)

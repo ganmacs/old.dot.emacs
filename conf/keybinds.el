@@ -61,7 +61,7 @@
 ;; ------------shift + ctrl-------------
 (global-set-key (kbd "C-S-f") 'next-space)
 (global-set-key (kbd "C-S-b") 'previous-space)
-(global-set-key (kbd "C-S-i") 'quote-insert-inline)
+(global-set-key (kbd "C-S-s") 'quote-insert-inline)
 (global-set-key (kbd "C-S-d") 'double-quote-insert-inline)
 (global-set-key (kbd "C-S-t") 'previous-transpose-char)
 
