@@ -40,6 +40,8 @@
 
 ;;-------------- @ruby-mode ----------------
 
+(autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files" t)
+
 (append-to-list 'auto-mode-alist
                 ("Gemfile" . ruby-mode)
                 ("\\.thor$" . ruby-mode)

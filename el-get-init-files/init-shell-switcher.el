@@ -5,35 +5,30 @@
 (setq shell-switcher-mode t)
 
 ;環境変数設定
-(setenv "PATH" (concat
-                "/usr/local/bin:"
-                "/usr/bin"
-                "/usr/X11/bin:"
-                "/Applications/mongodb-osx-x86_64-1.8.2/bin:"
-                (concat (getenv "HOME") "/.rbenv/shims:")
-                (concat (getenv "HOME") "/.rbenv/bin:")
-                (concat (getenv "HOME") "/.cabal/bin:")
-                "/usr/texbin:"
-                "/usr/local/share/npm/bin:"
-                (concat (getenv "HOME") "/node_modules/.bin:")
-                (concat (getenv "HOME") "/local/node/bin:")
-                "/opt/local/bin:"
-                "/opt/local/sbin:"
-                "/Applications/UpTeX.app/teTeX/bin/:"
-                (getenv "PATH")))
+;; (setenv "PATH" (concat
+;;                 (concat (getenv "HOME") "/.rbenv/shims:")
+;;                 (concat (getenv "HOME") "/.cabal/bin:")
+;;                 "/usr/local/bin:"
+;;                 "/usr/X11/bin:"
+;;                 "/usr/local/share/npm/bin:"
+;;                 (concat (getenv "HOME") "/node_modules/.bin:")
+;;                 (concat (getenv "HOME") "/local/node/bin:")
+;;                 "/opt/local/bin:"
+;;                 "/opt/local/sbin:"
+;;                 ;; (getenv "PATH")
+;;                 ))
 
 
-(setenv "NODE_PATH" (concat
-                     (concat (getenv "HOME") "/.npm/lib:")
-                     (concat (getenv "HOME") "/local/node:")
-;;                      (concat (getenv "HOME") "/.rbenv/shims:")
-                     (concat (getenv "HOME") "/local/node/lib/node_modules")
-                     ))
+;; (setenv "NODE_PATH" (concat
+;;                      (concat (getenv "HOME") "/.npm/lib:")
+;;                      (concat (getenv "HOME") "/local/node:")
+;;                      (concat (getenv "HOME") "/local/node/lib/node_modules")
+;;                      ))
 
-(setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims/")
-                 (cons (concat (getenv "HOME") "/.rbenv/bin/") exec-path)))
+;; (setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims/")
+;;                  (cons (concat (getenv "HOME") "/.rbenv/bin/") exec-path)))
 
-(add-to-list 'exec-path "/usr/local/bin")
+;; (add-to-list 'exec-path "/usr/local/bin")
 
 ;; 環境変数を基に、eshellサーチパスを設定する
 (setq eshell-path-env (getenv "PATH"))

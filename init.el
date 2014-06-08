@@ -24,7 +24,6 @@
    (:name duplicate-thing       :type github :pkgname "ongaeshi/duplicate-thing")
    (:name dash-at-point         :type github :pkgname "stanaka/dash-at-point")
    (:name auto-highlight-symbol :type github :pkgname "emacsmirror/auto-highlight-symbol")
-   (:name rbenv                 :type github :pkgname "senny/rbenv.el")
    (:name emacs-anzu            :type github :pkgname "syohex/emacs-anzu")
    (:name key-combo             :type github :pkgname "uk-ar/key-combo")
    (:name zlc                   :type github :pkgname "mooz/emacs-zlc")
@@ -86,6 +85,7 @@
     recentf-ext        ; Recentf extensions
     helm-etags-plus    ; etags plus for helm-mode
     move-text          ; Move current line or region with M-up or M-down.
+    exec-path-from-shell ;  Emacs plugin for dynamic PATH loading
     ; evil               ; Evil is an extensible vi layer for Emacs.
 
     ;; key env
@@ -105,12 +105,11 @@
     markdown-mode      ; Major mode to edit Markdown files in Emacs
     yaml-mode          ; Simple major mode to edit YAML file for emacs
     scss-mode          ; Major mode for editing SCSS files(http://sass-lang.com)
-    rspec-mode         ; Enhance ruby-mode for RSpec
-    rsense             ; RSense client for Emacs
-    rinari             ; Rinari Is Not A Rails IDE
     jedi               ; An awesome Python auto-completion for Emacs
     haskell-mode       ; A Haskell editing mode
     ghc-mod            ; Happy Haskell programming
+    robe-mode          ; Code navigation, documentation lookup and completion for Ruby
+    rinari             ; Rinari Is Not A Rails IDE
 
     ;; looks
     yascroll           ; Yet Another Scroll Bar Mode

@@ -2,6 +2,6 @@
 # name: initialize ... end
 # key: initialize
 # --
-initialize
+def initialize(arg)
   $0
 end
