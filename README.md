@@ -13,17 +13,6 @@
 * eshellのalias: ~/.eshell/alias
 
 
-## eshellのエイリアス設定
-
-`~/.emacs/eshell/alias`にエイリアスを記述
-
-```
-alias term open -a /Applications/iTerm.app $1
-alias less view-file $1
-alias l ls -l $*
-alias be bundle exec $*
-```
-
 ## helmで全てのローカルファイルにアクセス
 
 ```
@@ -47,7 +36,6 @@ init-markdown-mode.el に以下の設定を行うことで、
 ```
 $ brew install markdown
 ```
-
 
 ## 英語スペルチェッカー
 
@@ -112,13 +100,4 @@ the silver searchが必要なので以下実行
 
 ```
 $ brew isntall the_silver_search
-```
-
-## rubyを更に便利に
-
-brewでインストールし，メッセージ通りにコマンド実行
-
-```
-$ brew install rsene
-ruby /usr/local/Cellar/rsense/0.3/libexec/etc/config.rb > ~/.rsense
 ```

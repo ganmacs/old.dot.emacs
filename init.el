@@ -84,7 +84,6 @@
     flycheck           ; On-the-fly syntax checking extension
     recentf-ext        ; Recentf extensions
     helm-etags-plus    ; etags plus for helm-mode
-    move-text          ; Move current line or region with M-up or M-down.
     exec-path-from-shell ;  Emacs plugin for dynamic PATH loading
     ; evil               ; Evil is an extensible vi layer for Emacs.
 
