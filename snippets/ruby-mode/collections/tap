@@ -2,4 +2,4 @@
 # name: tap
 # key: tap
 # --
-tap {|${e}| $0 }
+tap { |${e}| $0 }

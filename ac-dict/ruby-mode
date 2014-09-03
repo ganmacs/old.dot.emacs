@@ -2153,6 +2153,8 @@ should_not
 specify
 to
 visit
+be_truthy
+be_falsey
 
 failure_message_for_should
 failure_message_for_should_not

@@ -2,4 +2,4 @@
 # name: each_with_index {|element, index| ... }
 # key: each_with_index
 # --
-each_with_index {|${e}, ${i}| $0 }
+each_with_index { |${e}, ${i}| $0 }

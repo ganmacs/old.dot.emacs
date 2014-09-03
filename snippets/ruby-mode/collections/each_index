@@ -2,4 +2,4 @@
 # name: each_index {|index| ... }
 # key: each_index
 # --
-each_index {|${i}| $0 }
+each_index { |${i}| $0 }
