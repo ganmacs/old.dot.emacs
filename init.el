@@ -93,6 +93,7 @@
     key-chord          ; Map pairs of simultaneously pressed keys to commands.
 
     ;; dired
+    dired-hacks        ; Collection of useful dired additions.
     dired+             ; Extensions to Dired
     dired-details+     ; Make file details hide-able in dired
 
