@@ -76,6 +76,12 @@
 (global-set-key (kbd "M-n") 'forward-paragraph)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 
+;; 入れ替え
+(global-set-key (kbd "M-a") 'beginning-of-defun)
+(global-set-key (kbd "M-e") 'end-of-defun)
+(global-set-key (kbd "M-C-a") 'backward-sentence)
+(global-set-key (kbd "M-C-e") 'forward-sentence)
+
 ;; --------------super------------------
 ;; 良い感じに削除
 (global-set-key (kbd "s-k") 'kill-sexp)

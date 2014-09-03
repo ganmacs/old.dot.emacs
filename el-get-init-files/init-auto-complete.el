@@ -6,14 +6,15 @@
 (custom-set-variables
  '(ac-use-fuzzy t)
  '(ac-dwim t)
- '(ac-use-menu-map t))
+ '(ac-use-menu-map t)
+ '(ac-ignore-case nil))
 
 (setq ac-comphist-file (concat user-emacs-directory "log/ac-comphist.dat"))
 (add-to-list 'ac-dictionary-directories (expand-file-name "~/.emacs.d/ac-dict"))
 
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
-(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+(define-key ac-mode-map (kbd "M-/") 'auto-complete)
 
 (append-to-list 'ac-modes
                 html-mode

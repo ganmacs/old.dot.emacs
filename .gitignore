@@ -20,3 +20,4 @@ history
 log/*
 /undohist
 .python-environments
+bookmarks

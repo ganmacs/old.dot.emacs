@@ -235,6 +235,26 @@
   )
 
 
+;; tuareg-mode --------------------------------------------------------
+(defvar kb-tuareg
+  '(("-"  . (key-combo-execute-original " - "))
+    ("+"  . " + ")
+    ("/"  . (key-combo-execute-original " / "))
+    ("*"  . (" * " "**" key-combo-execute-original) )
+    ("+."  . " +. ")
+    ("-."  . " -. ")
+    ("*."  . " *. ")
+    ("/."  . " /. ")
+    (":="  . " := ")
+    ("|"  . (" | " " || "))
+    ("&"  . (" & " " && "))
+    (";"  . ("; " ";;"))
+    (":"  . (key-combo-execute-original " :: "))
+    ("->" . " -> ")
+    )
+  )
+
+
 
 ;; tex-mode----------------------------------------------
 
@@ -290,6 +310,9 @@
   (key-combo-define-hook 'haskell-mode-hook
                          'kb-haskell-load
                          kb-haskell)
+  (key-combo-define-hook 'tuareg-mode-hook
+                         'kb-tuareg-load
+                         kb-tuareg)
   )
 
 (my-key-combo-load)
