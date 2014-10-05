@@ -62,6 +62,7 @@
     tuareg-mode-hook
     enh-ruby-mode-hook
     c-mode-common-hook
+    scala-mode-hook
     )
   )
 
@@ -265,7 +266,36 @@
     )
   )
 
+;; scala ----------------------------
+(defvar kb-scala
+  '(
+    ("+"  . (" + " " ++ "))
+    ("/"  . (" / " "// "))
+    ("-"  . (" - " key-combo-execute-original))
+    ("->" . " -> ")
+    ("<-" . " <- ")
+    ("||" . " || ")
+    ("/:" . " /: ")
+    (":"  . (": " " :: " " ::: "))
+    ("<%" . " <% ")
+    ("<:" . " <: ")
+    )
+  )
 
+(defvar kb-ensime
+  '(
+    ("+"  . (" + " " ++ "))
+    ("/"  . (" / " "// "))
+    ("-"  . (" - " key-combo-execute-original))
+    ("->" . " -> ")
+    ("<-" . " <- ")
+    ("||" . " || ")
+    ("/:" . " /: ")
+    (":"  . (": " " :: " " ::: "))
+    ("<%" . " <% ")
+    ("<:" . " <: ")
+    )
+  )
 
 
 (defun my-key-combo-load ()
@@ -313,6 +343,12 @@
   (key-combo-define-hook 'tuareg-mode-hook
                          'kb-tuareg-load
                          kb-tuareg)
+  (key-combo-define-hook 'scala-mode-hook
+                         'kb-scala-load
+                         kb-scala)
+  (key-combo-define-hook 'ensime-mode-hook
+                         'kb-ensime-load
+                         kb-ensime)
   )
 
 (my-key-combo-load)

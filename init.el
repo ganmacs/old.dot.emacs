@@ -109,6 +109,8 @@
     ghc-mod            ; Happy Haskell programming
     robe-mode          ; Code navigation, documentation lookup and completion for Ruby
     rinari             ; Rinari Is Not A Rails IDE
+    ensime             ; ENhanced Scala Interaction Mode for Emacs
+    scala-mode2        ; A new scala-mode for Emacs 24.
 
     ;; looks
     yascroll           ; Yet Another Scroll Bar Mode

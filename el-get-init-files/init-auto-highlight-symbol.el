@@ -17,6 +17,7 @@
                           python-mode
                           scheme-mode
                           haskell-mode
+                          scala-mode
                           )))
 
 (setq ahs-definition-face-list (append ahs-definition-face-list

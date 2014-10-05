@@ -37,6 +37,9 @@
 (add-hook-lambda 'haskell-mode-hook
                  (highlight-indentation-current-column-mode))
 
+(add-hook-lambda 'scala-mode-hook
+                 (highlight-indentation-current-column-mode))
+
 (set-face-background 'highlight-indentation-current-column-face "#222")
 
 (highlight-indentation-current-column-mode)
