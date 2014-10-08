@@ -5,7 +5,6 @@
             (key-chord-define php-mode-map "FF"  "->")
             (define-key php-mode-map (kbd "C-.") 'other-window)
             (define-key php-mode-map (kbd "M-j") 'duplicate-thing)
-            (setq ruby-deep-indent-paren-style nil)
             (c-set-offset 'case-label' 4)
             (c-set-offset 'arglist-intro' 4)
             (c-set-offset 'arglist-cont-nonempty' 4)

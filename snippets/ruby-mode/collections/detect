@@ -2,4 +2,4 @@
 #name: detect {|element| ... }
 # key: detect
 # --
-detect {|${e}| $0 }
+detect { |${e}| $0 }

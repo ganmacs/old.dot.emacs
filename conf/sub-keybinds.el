@@ -51,6 +51,7 @@
 
 (add-hook-lambda 'ruby-mode-hook
                  (setq ruby-insert-encoding-magic-comment nil)
+                 (setq ruby-deep-indent-paren-style nil)
                  (define-key ruby-mode-map (kbd "C-M-p") 'chrome-scroll-up)
                  (define-key ruby-mode-map (kbd "C-M-n") 'chrome-scroll-down)
                  (define-key ruby-mode-map (kbd "C-M-r") 'chrome-reload)
