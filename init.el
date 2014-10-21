@@ -41,9 +41,6 @@
    (:name tuareg-mode           :type github :pkgname "ocaml/tuareg")
    (:name emacs-git-grep        :type github :pkgname "ganmacs/emacs-git-grep" :depends helm)
 
-   (:name cider                 :type github :pkgname "clojure-emacs/cider"
-          :depends (pkg-info dash clojure-mode epl))
-
    (:name fold-dwim
           :type http
           :url "http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/fold-dwim.el"
@@ -111,6 +108,8 @@
     rinari             ; Rinari Is Not A Rails IDE
     ensime             ; ENhanced Scala Interaction Mode for Emacs
     scala-mode2        ; A new scala-mode for Emacs 24.
+    Emacs-Groovy-Mode  ; This is a collection of (X)Emacs modes for use with Groovy-related technology
+    cider              ; CIDER is a Clojure IDE and REPL.
 
     ;; looks
     yascroll           ; Yet Another Scroll Bar Mode

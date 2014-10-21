@@ -1,11 +1,10 @@
-;; (defvar my/ctrl-c-map (make-sparse-keymap)
-;;   "My original keymap binded to C-q.")
-;; (defvar ctl-c-map (make-keymap))
+(require 'smartrep)
+(defvar my/ctrl-c-map (make-sparse-keymap))
+(defvar ctl-c-map (make-keymap))
 
 (global-unset-key (kbd "C-:"))
 (smartrep-define-key global-map "C-:"
-  '(
-    ("b" . 'point-undo)
+  '(("b" . 'point-undo)
     ("f" . 'point-redo)
     ("h" . (windmove-left))
     ("j" . (windmove-down))

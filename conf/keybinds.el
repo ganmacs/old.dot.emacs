@@ -55,6 +55,9 @@
 ;; １行コメント
 (global-set-key (kbd "C-q") 'one-line-comment)
 
+;; 全部インデント
+(global-set-key (kbd "C-S-i") 'indent-buffer)
+
 ;; いい感じにマーク
 (global-set-key (kbd "C-#") 'mark-sexp)
 
@@ -237,6 +240,13 @@
     (set-mark (point))
     (end-of-line)
     (comment-or-uncomment-region (region-beginning) (region-end))))
+
+;; 全部インデント
+(defun indent-buffer ()
+  (interactive)
+  (save-excursion
+    (mark-whole-buffer)
+    (indent-for-tab-command)))
 
 ;; 文末いって改行
 (defun end-line-indent ()

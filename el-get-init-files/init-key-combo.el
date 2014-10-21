@@ -148,7 +148,7 @@
     ("|"  . (" | " " || " "|`!!'|"))
     ("=~" . " =~ ")
     ("/" . (key-combo-execute-original " / " " /`!!'/"))
-    ("*"  . (" * " "**" key-combo-execute-original) )
+    ("*"  . (" * " key-combo-execute-original "**") )
     ("**"  . "**" )
     ("**=" . " **= ")
     ("<" . (" < " " << "))
@@ -204,7 +204,7 @@
 (defvar kb-css
   '(
     (":" . ": ")
-;;    ("{" . (key-combo-execute-original))
+    ;;    ("{" . (key-combo-execute-original))
     ;; ("{" . " {\n`!!'\n}")
     (","  . ", ")
     )
