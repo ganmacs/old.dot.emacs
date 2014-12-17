@@ -1,3 +1,7 @@
+__This is old emacs file__
+my new emacs config file is https://github.com/ganmacs/emacs.d
+
+
 ## ファイル構成
 
 * 最初に読まれる: ~/.emacs.d/init.el
